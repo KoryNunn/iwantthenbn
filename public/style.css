@@ -1,43 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Pathway+Gothic+One|Aldrich);
+
+
 html, body{
-    color: black;
+    color: white;
     font-size: 20px;
     font-family: Arial;
     height:100%;
-    background: #aaa;
+    background: #222;
     text-align: center;
     padding:0;
     margin:0;
 }
+
+section {
+    max-width: 800px;
+    margin: auto;
+}
+
+h1 {
+    font-family: "Pathway Gothic One";
+    font-size: 35px;
+    font-weight: normal;
+}
+h2 {
+    font-family: "Pathway Gothic One";
+    font-size: 50px;
+    color: #ccc;
+    font-weight: normal;
+    padding: 15px;
+    margin: 30px auto;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+    max-width: 500px;
+}
+
+
 a{
     color: white;
     text-decoration: none;
 }
-a:hover{
+a:hover {
     text-decoration: underline;
 }
-h1{
-    font-size: 30px;
-}
+
 .count{
+    font-family: "Aldrich";
     display:block;
     text-shadow: 0 0 30px rgb(150,255,100);
     font-size: 150px;
     color: white;
+    padding-top: 20px;
 }
 .rate{
+    padding-top: 20px;
+    font-family: "Aldrich";
     font-size: 60px;
     display:block;
     -webkit-transition: all 5s ease-out;
 }
 .results{
-    background: black;
     padding:20px;
     margin:20px 0;
     height:500px;
     color: white;
 }
+
+.current {
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #333;
+    background: #111;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
 .graphContainer{
-    margin:20px 0;
+    margin:20px auto;
+    max-width: 600px;
 }
 .changeLogo{
     background-image: url(http://d22r54gnmuhwmk.cloudfront.net/app-assets/wordmarks-s01bec25c51-e5eea4f1e4abb52f94dc17cb5b1ceeab.png);
@@ -47,4 +85,33 @@ h1{
     display:inline-block;
     margin:5px;
     vertical-align: middle;
+}
+
+.toolbar {
+    padding: 20px 0;
+}
+a.button {
+    background: #900;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border-bottom: 2px solid #600;
+    font-size: 24px;
+}
+a.button:hover {
+    text-decoration: none;
+    background: #a00;
+}
+
+body > header {
+    background: #000;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 10px;
+    color: #ccc;
+}
+body > header a {
+    text-decoration: underline;
+    color: #ccc;
 }
