@@ -50,7 +50,7 @@ function getData(){
 
             if(chart){
                 var series = chart.series[0],
-                    shift = series.data.length > 50; // shift if the series is longer than 50
+                    shift = series.data.length > 20; // shift if the series is longer than 20
 
                 // add the point
                 chart.series[0].addPoint([chartTime+=10, result.rate], true, shift);
