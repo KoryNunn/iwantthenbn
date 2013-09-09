@@ -6,6 +6,12 @@ var http = require('http'),
     apiKey = require('./key.json'),
     pollRate = 3000;
 
+function setNoCacheResponse(response){
+   response.setHeader("Cache-Control", "no-cache, private, no-store, must-revalidate, max-age=0, max-stale=0, post-check=0, pre-check=0");
+   response.setHeader("Pragma", "no-cache");
+   response.setHeader("Expires", 0);
+}
+
 function updateCount(){
     http.get({
         host: 'api.change.org',
@@ -35,18 +41,21 @@ updateCount();
 setInterval(updateCount, pollRate);
 
 var router = beeline.route({ // Create a new router
-    '/signatures': function(reqest, response) {
+    '/signatures': function(request, response) {
         response.end(JSON.stringify({
             signatureCount:latestData.signature_count,
             rate: latestData.rate
         }));
     },
-    '/': beeline.staticFile('./public/index.html'),
+    '/': function(request, response){
+        setNoCacheResponse(response);
+        return beeline.staticFile('./public/index.html','text/html',0)(request, response);
+    },
     '`path...`': beeline.staticDir('./public', {
         ".txt": "text/plain",
         ".html": "text/html",
         ".css": "text/css",
-        ".js": "application/javascript" })
+        ".js": "application/javascript" },0)
 });
 
 var server = http.createServer(router);
