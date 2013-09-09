@@ -60,6 +60,7 @@ var router = beeline.route({
         ".html": "text/html",
         ".css": "text/css",
         ".ico": "image/x-icon",
+        ".swf": "application/x-shockwave-flash",
         ".js": "application/javascript" }, 0)
 });
 
