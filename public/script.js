@@ -54,7 +54,7 @@ function getData(){
 
                 // add the point
                 chart.series[0].addPoint([chartTime+=10, result.rate], true, shift);
-            } 
+            }
 
         }
     }
