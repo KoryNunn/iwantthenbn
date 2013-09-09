@@ -60,13 +60,16 @@ em {
     font-family: "Aldrich";
     font-size: 60px;
     display:block;
+    line-height: 150px;
     -webkit-transition: all 5s ease-out;
 }
 .results{
     padding:20px;
-    margin:20px 0;
-    height:350px;
+    height:380px;
     color: white;
+}
+.current{
+    margin:20px 0;
 }
 
 .stats {
