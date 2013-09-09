@@ -36,6 +36,9 @@ h1{
     height:500px;
     color: white;
 }
+.graphContainer{
+    margin:20px 0;
+}
 .changeLogo{
     background-image: url(http://d22r54gnmuhwmk.cloudfront.net/app-assets/wordmarks-s01bec25c51-e5eea4f1e4abb52f94dc17cb5b1ceeab.png);
     background-position: 0 -286px;

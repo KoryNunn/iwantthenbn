@@ -22,6 +22,8 @@ function createXHR()
 }
 
 var result,
+    chart,
+    chartTime = 0,
     signatureCount,
     signatureRate,
     results = crel('div', {'class':'results'},
@@ -45,6 +47,15 @@ function getData(){
 
             signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
             signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
+
+            if(chart){
+                var series = chart.series[0],
+                    shift = series.data.length > 50; // shift if the series is longer than 50
+
+                // add the point
+                chart.series[0].addPoint([chartTime+=10, result.rate], true, shift);
+            } 
+
         }
     }
     xhr.open('GET', '/signatures', true);
@@ -69,4 +80,27 @@ window.addEventListener('load', function(){
         signatureRate.style['color'] = color;
         signatureRate.style['text-shadow'] = shadow + ', ' + shadow;
     },100);
+
+
+    chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container',
+                defaultSeriesType: 'spline'
+            },
+            title: {
+                text: 'Signatures per second over time'
+            },
+            xAxis: {
+                categories: ['seconds']
+            },
+            yAxis: {
+                title: {
+                    text: 'Signatures'
+                }
+            },
+            series:[{
+                name: 'Signature Rate',
+                data: []
+            }]
+        });
 });
