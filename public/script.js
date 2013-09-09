@@ -27,11 +27,11 @@ var result,
     results = crel('div', {'class':'results'},
         crel('div',
             crel('span','Number of signatures:'),
-            signatureCount = crel('span',{'class':'count'})
+            signatureCount = crel('span',{'class':'count'}, 'Loading..')
         ),
         crel('div',
             crel('span','Signatures per second:'),
-            signatureRate = crel('span',{'class':'rate'})
+            signatureRate = crel('span',{'class':'rate'}, 'Loading..')
         )
     );
 
@@ -43,8 +43,8 @@ function getData(){
         {
             result = JSON.parse(xhr.responseText);
 
-            signatureCount.textContent = result.signatureCount || '';
-            signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : '';
+            signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
+            signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
         }
     }
     xhr.open('GET', '/signatures', true);
@@ -60,7 +60,7 @@ window.addEventListener('load', function(){
     setInterval(getData,3000);
     setInterval(function(){
         result.signatureCount = result.signatureCount + result.rate/3;
-        signatureCount.textContent = parseInt(result.signatureCount);
+        signatureCount.textContent = parseInt(result.signatureCount) || 'loading..';
 
         signatureRate.style['font-size'] = Math.min(((result.rate + 1) * 50), 300) + 'px';
         var color = 'hsl(' + (50-(result.rate * 4)) + ',' + (result.rate * 100) + '%,' + result.rate * 100 + '%)';
