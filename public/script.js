@@ -85,13 +85,21 @@ window.addEventListener('load', function(){
     chart = new Highcharts.Chart({
             chart: {
                 renderTo: 'container',
-                defaultSeriesType: 'spline'
+                defaultSeriesType: 'spline',
+                backgroundColor: {
+                    linearGradient: [0, 0, 500, 500],
+                    stops: [
+                        [0, 'rgb(0, 0, 0)'],
+                        [1, 'rgb(10, 10, 10)']
+                    ]
+                }
             },
             title: {
                 text: 'Signatures per second over time'
             },
             xAxis: {
-                categories: ['seconds']
+                categories: ['seconds'],
+                tickInterval: 10
             },
             yAxis: {
                 title: {
