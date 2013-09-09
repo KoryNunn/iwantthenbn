@@ -70,6 +70,7 @@ window.addEventListener('load', function(){
     getData();
 
     setInterval(getData,3000);
+
     setInterval(function(){
         result.signatureCount = result.signatureCount + result.rate/3;
         signatureCount.textContent = parseInt(result.signatureCount) || 'loading..';
@@ -82,10 +83,12 @@ window.addEventListener('load', function(){
         signatureRate.style['text-shadow'] = shadow + ', ' + shadow;
     },100);
 
+    var rateChartWrapper = document.getElementById('ratechart');
+    var popChartWrapper = document.getElementById('popchart');
 
     rateChart = new Highcharts.Chart({
-        rateChart: {
-            renderTo: 'ratechart',
+        chart: {
+            renderTo: rateChartWrapper,
             defaultSeriesType: 'spline',
             backgroundColor: {
                 linearGradient: [0, 0, 500, 500],
@@ -116,39 +119,6 @@ window.addEventListener('load', function(){
         series:[{
             name: 'Signature Rate',
             data: []
-        }]
-    });
-    popChart = new Highcharts.Chart({
-        rateChart: {
-            renderTo: 'popchart',
-            defaultSeriesType: 'pie',
-            backgroundColor: {
-                linearGradient: [0, 0, 500, 500],
-                stops: [
-                    [0, 'rgb(0, 0, 0)'],
-                    [1, 'rgb(10, 10, 10)']
-                ]
-            }
-        },
-        title: {
-            text: 'Percent of the australian population'
-        },
-        series:[{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['Others',   0.7]
-            ]
         }]
     });
 });
