@@ -22,7 +22,8 @@ function createXHR()
 }
 
 var result,
-    chart,
+    rateChart,
+    popChart,
     chartTime = 0,
     signatureCount,
     signatureRate,
@@ -48,12 +49,12 @@ function getData(){
             signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
             signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
 
-            if(chart){
-                var series = chart.series[0],
+            if(rateChart){
+                var series = rateChart.series[0],
                     shift = series.data.length > 20; // shift if the series is longer than 20
 
                 // add the point
-                chart.series[0].addPoint([chartTime+=10, result.rate], true, shift);
+                rateChart.series[0].addPoint([chartTime+=10, result.rate], true, shift);
             }
 
         }
@@ -82,39 +83,72 @@ window.addEventListener('load', function(){
     },100);
 
 
-    chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'container',
-                defaultSeriesType: 'spline',
-                backgroundColor: {
-                    linearGradient: [0, 0, 500, 500],
-                    stops: [
-                        [0, 'rgb(0, 0, 0)'],
-                        [1, 'rgb(10, 10, 10)']
-                    ]
-                }
-            },
+    rateChart = new Highcharts.Chart({
+        rateChart: {
+            renderTo: 'ratechart',
+            defaultSeriesType: 'spline',
+            backgroundColor: {
+                linearGradient: [0, 0, 500, 500],
+                stops: [
+                    [0, 'rgb(0, 0, 0)'],
+                    [1, 'rgb(10, 10, 10)']
+                ]
+            }
+        },
+        title: {
+            text: 'Signatures per second over time'
+        },
+        xAxis: {
+            categories: ['seconds'],
+            tickInterval: 10,
+            gridLineWidth:0,
+            labels:
+            {
+              enabled: false
+            }
+        },
+        yAxis: {
             title: {
-                text: 'Signatures per second over time'
+                text: 'Signatures'
             },
-            xAxis: {
-                categories: ['seconds'],
-                tickInterval: 10,
-                gridLineWidth:0,
-                labels:
+            gridLineWidth:0
+        },
+        series:[{
+            name: 'Signature Rate',
+            data: []
+        }]
+    });
+    popChart = new Highcharts.Chart({
+        rateChart: {
+            renderTo: 'popchart',
+            defaultSeriesType: 'pie',
+            backgroundColor: {
+                linearGradient: [0, 0, 500, 500],
+                stops: [
+                    [0, 'rgb(0, 0, 0)'],
+                    [1, 'rgb(10, 10, 10)']
+                ]
+            }
+        },
+        title: {
+            text: 'Percent of the australian population'
+        },
+        series:[{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Firefox',   45.0],
+                ['IE',       26.8],
                 {
-                  enabled: false
-                }
-            },
-            yAxis: {
-                title: {
-                    text: 'Signatures'
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
                 },
-                gridLineWidth:0
-            },
-            series:[{
-                name: 'Signature Rate',
-                data: []
-            }]
-        });
+                ['Safari',    8.5],
+                ['Opera',     6.2],
+                ['Others',   0.7]
+            ]
+        }]
+    });
 });
