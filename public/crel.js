@@ -9,28 +9,28 @@
 /*
 
     This code is not formatted for readability, but rather run-speed and to assist compilers.
-    
+
     However, the code's intention should be transparent.
-    
+
     *** IE SUPPORT ***
-    
+
     If you require this library to work in IE7, add the following after declaring crel.
-    
+
     var testDiv = document.createElement('div'),
         testLabel = document.createElement('label');
 
-    testDiv.setAttribute('class', 'a');    
+    testDiv.setAttribute('class', 'a');
     testDiv['className'] !== 'a' ? crel.attrMap['class'] = 'className':undefined;
     testDiv.setAttribute('name','a');
     testDiv['name'] !== 'a' ? crel.attrMap['name'] = function(element, value){
         element.id = value;
     }:undefined;
-    
+
 
     testLabel.setAttribute('for', 'a');
     testLabel['htmlFor'] !== 'a' ? crel.attrMap['for'] = 'htmlFor':undefined;
-    
-    
+
+
 
 */
 
@@ -73,47 +73,47 @@
             settings = null;
         }
 
-        // shortcut if there is only one child that is a string    
+        // shortcut if there is only one child that is a string
         if((argumentsLength - childIndex) === 1 && typeof args[childIndex] === 'string' && element.textContent !== undefined){
             element.textContent = args[childIndex];
-        }else{    
+        }else{
             for(; childIndex < argumentsLength; ++childIndex){
                 child = args[childIndex];
-                
+
                 if(child == null){
                     continue;
                 }
-                
+
                 if(!isNode(child)){
                     child = document.createTextNode(child);
                 }
-                
+
                 element.appendChild(child);
             }
         }
-        
+
         for(var key in settings){
             if(!attributeMap[key]){
                 element.setAttribute(key, settings[key]);
             }else{
                 var attr = crel.attrMap[key];
-                if(typeof attr === 'function'){     
-                    attr(element, settings[key]);               
-                }else{            
+                if(typeof attr === 'function'){
+                    attr(element, settings[key]);
+                }else{
                     element.setAttribute(attr, settings[key]);
                 }
             }
         }
-        
+
         return element;
     }
-    
+
     // Used for mapping one kind of attribute to the supported version of that in bad browsers.
     // String referenced so that compilers maintain the property name.
     crel['attrMap'] = {};
-    
+
     // String referenced so that compilers maintain the property name.
     crel["isNode"] = isNode;
-    
+
     return crel;
 }));
