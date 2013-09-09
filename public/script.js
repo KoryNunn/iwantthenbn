@@ -99,12 +99,18 @@ window.addEventListener('load', function(){
             },
             xAxis: {
                 categories: ['seconds'],
-                tickInterval: 10
+                tickInterval: 10,
+                gridLineWidth:0,
+                labels:
+                {
+                  enabled: false
+                }
             },
             yAxis: {
                 title: {
                     text: 'Signatures'
-                }
+                },
+                gridLineWidth:0
             },
             series:[{
                 name: 'Signature Rate',
