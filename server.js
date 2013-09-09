@@ -59,6 +59,7 @@ var router = beeline.route({
         ".txt": "text/plain",
         ".html": "text/html",
         ".css": "text/css",
+        ".ico": "image/x-icon",
         ".js": "application/javascript" }, 0)
 });
 
