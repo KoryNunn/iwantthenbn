@@ -60,16 +60,19 @@ em {
     font-family: "Aldrich";
     font-size: 60px;
     display:block;
+    line-height: 150px;
     -webkit-transition: all 5s ease-out;
 }
 .results{
     padding:20px;
-    margin:20px 0;
-    height:500px;
+    height:380px;
     color: white;
 }
+.current{
+    margin:20px 0;
+}
 
-.current {
+.stats {
     border-top: 1px solid #000;
     border-bottom: 1px solid #333;
     background: #111;
@@ -114,8 +117,12 @@ body > footer {
     font-size: 16px;
     padding: 15px;
     color: #ccc;
+    line-height: 26px;
 }
 body > footer a {
     text-decoration: underline;
     color: #ccc;
+}
+body > footer .sponsor { 
+    margin-top: 10px;
 }
