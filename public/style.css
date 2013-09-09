@@ -1,0 +1,45 @@
+html, body{
+    color: black;
+    font-size: 20px;
+    font-family: Arial;
+    height:100%;
+    background: #aaa;
+    text-align: center;
+    padding:0;
+    margin:0;
+}
+a{
+    color: white;
+}
+a:hover{
+    text-decoration: none;
+}
+h1{
+    font-size: 30px;
+}
+.count{
+    display:block;
+    text-shadow: 0 0 30px rgb(150,255,100);
+    font-size: 150px;
+    color: white;
+}
+.rate{
+    font-size: 60px;
+    display:block;
+    -webkit-transition: all 5s ease-out;
+}
+.results{
+    background: black;
+    padding:20px;
+    margin-top:20px;
+    height:500px;
+}
+.changeLogo{
+    background-image: url(http://d22r54gnmuhwmk.cloudfront.net/app-assets/wordmarks-s01bec25c51-e5eea4f1e4abb52f94dc17cb5b1ceeab.png);
+    background-position: 0 -286px;
+    width:116px;
+    height:23px;
+    display:inline-block;
+    margin:5px;
+    vertical-align: middle;
+}
