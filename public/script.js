@@ -54,7 +54,7 @@ function getData(){
 
 window.addEventListener('load', function(){
 
-    document.body.appendChild(results);
+    document.querySelector('.current').appendChild(results);
     getData();
 
     setInterval(getData,3000);

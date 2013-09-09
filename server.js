@@ -6,8 +6,6 @@ var http = require('http'),
     apiKey = require('./key.json'),
     pollRate = 3000;
 
-    console.log(apiKey.key);
-
 function updateCount(){
     http.get({
         host: 'api.change.org',
