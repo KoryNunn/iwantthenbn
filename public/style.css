@@ -90,16 +90,16 @@ a.button:hover {
     background: #a00;
 }
 
-body > header {
-    background: #000;
+body > footer {
+    background: #222;
     color: white;
     text-align: center;
     font-family: Arial;
-    font-size: 14px;
-    padding: 10px;
+    font-size: 16px;
+    padding: 15px;
     color: #ccc;
 }
-body > header a {
+body > footer a {
     text-decoration: underline;
     color: #ccc;
 }
