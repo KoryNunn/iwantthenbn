@@ -10,9 +10,10 @@ html, body{
 }
 a{
     color: white;
+    text-decoration: none;
 }
 a:hover{
-    text-decoration: none;
+    text-decoration: underline;
 }
 h1{
     font-size: 30px;
@@ -33,6 +34,7 @@ h1{
     padding:20px;
     margin-top:20px;
     height:500px;
+    color: white;
 }
 .changeLogo{
     background-image: url(http://d22r54gnmuhwmk.cloudfront.net/app-assets/wordmarks-s01bec25c51-e5eea4f1e4abb52f94dc17cb5b1ceeab.png);
