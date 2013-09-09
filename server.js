@@ -3,12 +3,15 @@ var http = require('http'),
     port = process.env.PORT || 9000,
     latestData,
     lastCount,
+    apiKey = require('./key.json'),
     pollRate = 3000;
+
+    console.log(apiKey.key);
 
 function updateCount(){
     http.get({
         host: 'api.change.org',
-        path: '/v1/petitions/1292760?api_key='
+        path: '/v1/petitions/1292760?api_key=' + apiKey.key
     }, function(res) {
         if (res.statusCode === 200) {
             var body = [];
