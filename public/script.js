@@ -76,7 +76,7 @@ window.addEventListener('load', function(){
     setInterval(getData,3000);
 
     setInterval(function(){
-        result.signatureCount = result.signatureCount + result.rate/3;
+        result.signatureCount = result.signatureCount + result.rate/10;
         signatureCount.textContent = parseInt(result.signatureCount) || 'loading..';
 
         signatureRate.style['font-size'] = Math.min(((result.rate + 1) * 50), 300) + 'px';
