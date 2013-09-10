@@ -44,8 +44,12 @@ function getData(){
     {
         if (xhr.readyState === 4)
         {
+            var previousCount = result ? result.signatureCount : 0;
             result = JSON.parse(xhr.responseText);
 
+            if (previousCount > result.signatureCount) {
+                result.signatureCount = parseInt(previousCount);
+            }
             signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
             signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
 
@@ -58,7 +62,7 @@ function getData(){
             }
 
         }
-    }
+    };
     xhr.open('GET', '/signatures', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send();
