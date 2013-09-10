@@ -87,8 +87,16 @@ em {
     left: 10px;
     top: 30px;
 }
-.stats .sponsor img {
+.stats .sponsor img, .stats .sponsor-2 img {
     margin-top: 5px;
+}
+
+.stats .sponsor-2 {
+    font-size: 11px;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    color: #999;
 }
 
 .graphContainer{
@@ -147,6 +155,9 @@ body > footer .sponsor img {
 
 @media only screen and (max-width: 700px) {
     .stats .sponsor {
+        display: none;
+    }
+    .stats .sponsor-2 {
         display: none;
     }
     body > footer .sponsor {
