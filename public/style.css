@@ -78,6 +78,17 @@ em {
     background: #111;
     overflow: hidden;
     margin-top: 20px;
+    position: relative;
+}
+.stats .sponsor {
+    font-size: 11px;
+    color: #999;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+}
+.stats .sponsor img {
+    margin-top: 5px;
 }
 
 .graphContainer{
