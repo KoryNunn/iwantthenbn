@@ -25,6 +25,10 @@ var result,
     rateChart,
     popChart,
     chartTime = 0,
+    dataInterval = 3000,
+    displayInterval = 100,
+    dataDisplayRatio = dataInterval / displayInterval,
+    displayCount = 0,
     signatureCount,
     signatureRate,
     results = crel('div', {'class':'results'},
@@ -44,13 +48,12 @@ function getData(){
     {
         if (xhr.readyState === 4)
         {
-            var previousCount = result ? result.signatureCount : 0;
             result = JSON.parse(xhr.responseText);
 
-            if (previousCount > result.signatureCount) {
-                result.signatureCount = parseInt(previousCount);
+            if (!displayCount) {
+                // Set the initial value
+                displayCount = result.signatureCount ? result.signatureCount : 0;
             }
-            signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
             signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
 
             if(rateChart){
@@ -73,19 +76,24 @@ window.addEventListener('load', function(){
     document.querySelector('.current').appendChild(results);
     getData();
 
-    setInterval(getData,3000);
+    setInterval(getData, dataInterval);
 
     setInterval(function(){
-        result.signatureCount = result.signatureCount + result.rate/10;
-        signatureCount.textContent = parseInt(result.signatureCount) || 'loading..';
+        if (!result) {
+            return;
+        }
+        // play catchup
+        displayCount += (result.signatureCount - displayCount) / dataDisplayRatio;
+        signatureCount.textContent = parseInt(displayCount) || 'loading..';
 
+        // this should probably be in the data update?
         signatureRate.style['font-size'] = Math.min(((result.rate + 1) * 50), 300) + 'px';
         var color = 'hsl(' + (50-(result.rate * 4)) + ',' + (result.rate * 100) + '%,' + result.rate * 100 + '%)';
         var shadowColor = 'hsl(' + (50-(result.rate * 4)) + ',' + (result.rate * 100) + '%,50%)';
         var shadow = '0 0 ' + result.rate * 100 + 'px ' + shadowColor;
         signatureRate.style['color'] = color;
         signatureRate.style['text-shadow'] = shadow + ', ' + shadow;
-    },100);
+    }, displayInterval);
 
     var rateChartWrapper = document.getElementById('ratechart');
     var popChartWrapper = document.getElementById('popchart');
@@ -111,7 +119,7 @@ window.addEventListener('load', function(){
             gridLineWidth:0,
             labels:
             {
-              enabled: false
+                enabled: false
             }
         },
         yAxis: {
