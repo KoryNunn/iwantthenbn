@@ -64,7 +64,7 @@ function getData(){
 
         }
     };
-    xhr.open('GET', 'http://iwantthenbn.com/signatures', true);
+    xhr.open('GET', '/signatures', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send();
 }
