@@ -25,6 +25,8 @@ var result,
     rateChart,
     popChart,
     chartTime = 0,
+    pauseCount = false,
+    displayCount = 0,
     signatureCount,
     signatureRate,
     results = crel('div', {'class':'results'},
@@ -44,13 +46,12 @@ function getData(){
     {
         if (xhr.readyState === 4)
         {
-            var previousCount = result ? result.signatureCount : 0;
             result = JSON.parse(xhr.responseText);
 
-            if (previousCount > result.signatureCount) {
-                result.signatureCount = parseInt(previousCount);
-            }
-            signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
+            pauseCount = displayCount > result.signatureCount;
+            displayCount = Math.max(displayCount, result.signatureCount);
+            // is this needed? let the 100ms callback update it
+            // signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
             signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
 
             if(rateChart){
@@ -63,7 +64,7 @@ function getData(){
 
         }
     };
-    xhr.open('GET', '/signatures', true);
+    xhr.open('GET', 'http://iwantthenbn.com/signatures', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send();
 }
@@ -76,8 +77,12 @@ window.addEventListener('load', function(){
     setInterval(getData,3000);
 
     setInterval(function(){
-        result.signatureCount = result.signatureCount + result.rate/3;
-        signatureCount.textContent = parseInt(result.signatureCount) || 'loading..';
+        if (pauseCount) {
+            return;
+        }
+
+        displayCount = displayCount + result.rate/10;
+        signatureCount.textContent = parseInt(displayCount) || 'loading..';
 
         signatureRate.style['font-size'] = Math.min(((result.rate + 1) * 50), 300) + 'px';
         var color = 'hsl(' + (50-(result.rate * 4)) + ',' + (result.rate * 100) + '%,' + result.rate * 100 + '%)';
@@ -111,7 +116,7 @@ window.addEventListener('load', function(){
             gridLineWidth:0,
             labels:
             {
-              enabled: false
+                enabled: false
             }
         },
         yAxis: {
