@@ -80,7 +80,6 @@ window.addEventListener('load', function(){
         if (pauseCount) {
             return;
         }
-
         displayCount = displayCount + result.rate/10;
         signatureCount.textContent = parseInt(displayCount) || 'loading..';
 
