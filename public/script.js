@@ -25,7 +25,9 @@ var result,
     rateChart,
     popChart,
     chartTime = 0,
-    pauseCount = false,
+    dataInterval = 3000,
+    displayInterval = 100,
+    dataDisplayRatio = dataInterval / displayInterval,
     displayCount = 0,
     signatureCount,
     signatureRate,
@@ -48,10 +50,10 @@ function getData(){
         {
             result = JSON.parse(xhr.responseText);
 
-            pauseCount = displayCount > result.signatureCount;
-            displayCount = Math.max(displayCount, result.signatureCount);
-            // is this needed? let the 100ms callback update it
-            // signatureCount.textContent = result.signatureCount ? result.signatureCount : 'loading..';
+            if (!displayCount) {
+                // Set the initial value
+                displayCount = result.signatureCount ? result.signatureCount : 0;
+            }
             signatureRate.textContent = result.rate ? parseInt(result.rate * 10) / 10 : 'loading..';
 
             if(rateChart){
@@ -74,22 +76,24 @@ window.addEventListener('load', function(){
     document.querySelector('.current').appendChild(results);
     getData();
 
-    setInterval(getData,3000);
+    setInterval(getData, dataInterval);
 
     setInterval(function(){
-        if (pauseCount) {
+        if (!result) {
             return;
         }
-        displayCount = displayCount + result.rate/10;
+        // play catchup
+        displayCount += (result.signatureCount - displayCount) / dataDisplayRatio;
         signatureCount.textContent = parseInt(displayCount) || 'loading..';
 
+        // this should probably be in the data update?
         signatureRate.style['font-size'] = Math.min(((result.rate + 1) * 50), 300) + 'px';
         var color = 'hsl(' + (50-(result.rate * 4)) + ',' + (result.rate * 100) + '%,' + result.rate * 100 + '%)';
         var shadowColor = 'hsl(' + (50-(result.rate * 4)) + ',' + (result.rate * 100) + '%,50%)';
         var shadow = '0 0 ' + result.rate * 100 + 'px ' + shadowColor;
         signatureRate.style['color'] = color;
         signatureRate.style['text-shadow'] = shadow + ', ' + shadow;
-    },100);
+    }, displayInterval);
 
     var rateChartWrapper = document.getElementById('ratechart');
     var popChartWrapper = document.getElementById('popchart');
