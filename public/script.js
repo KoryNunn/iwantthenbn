@@ -102,29 +102,42 @@ window.addEventListener('load', function(){
         chart: {
             renderTo: rateChartWrapper,
             defaultSeriesType: 'spline',
-            backgroundColor: {
-                linearGradient: [0, 0, 500, 500],
-                stops: [
-                    [0, 'rgb(0, 0, 0)'],
-                    [1, 'rgb(10, 10, 10)']
-                ]
+            backgroundColor: 'transparent'
+        },
+        colors:[
+            'white'
+        ],
+        title: {
+            text: 'Signatures per second over time',
+            style:{
+                color: 'white'
             }
         },
-        title: {
-            text: 'Signatures per second over time'
+        tooltip:{
+            backgroundColor: 'black',
+            color: 'white'
         },
         xAxis: {
             categories: ['seconds'],
             tickInterval: 10,
             gridLineWidth:0,
-            labels:
-            {
+            labels:{
                 enabled: false
             }
         },
         yAxis: {
             title: {
                 text: 'Signatures'
+            },
+            labels:{
+                style:{
+                    color: 'white'
+                }
+            },
+            title:{
+                style:{
+                    color: 'white'
+                }
             },
             gridLineWidth:0
         },
