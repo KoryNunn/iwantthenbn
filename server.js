@@ -33,6 +33,8 @@ function updateCount(){
         } else {
             console.log('Received non-ok response: ' + result.statusCode);
         }
+    }).on('error', function(error) {
+        console.log("Error: " + error.message);
     });
 }
 
