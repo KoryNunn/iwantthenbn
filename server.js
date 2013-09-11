@@ -42,6 +42,7 @@ setInterval(updateCount, pollRate);
 
 var router = beeline.route({
     '/signatures': function(request, response) {
+        setNoCacheResponse(response);
         response.end(JSON.stringify({
             signatureCount:latestData.signature_count,
             rate: latestData.rate
