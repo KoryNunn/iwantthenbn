@@ -66,7 +66,7 @@ function getData(){
 
         }
     };
-    xhr.open('GET', '/signatures', true);
+    xhr.open('GET', '/signatures?_=' + new Date().getTime(), true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.send();
 }
