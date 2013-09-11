@@ -5,7 +5,19 @@
     <script src="crel.js"></script>
     <script src="http://code.highcharts.com/adapters/standalone-framework.js"></script>
     <script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
-    <script src="script.js"></script>
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" media="screen" href="http://www.devslide.com/public/labs/browser-detection/browser-detection.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="ie.css" />
+        <script type="text/javascript" src="ie.js"></script>
+    <![endif]-->
+    <!--[if gte IE 9]>
+        <script src="script.js"></script>
+    <![endif]-->
+    <!--[if !IE]> -->
+        <script src="script.js"></script>
+    <!-- <![endif]-->
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>I want the right NBN!</title>
     <meta property="description" content="A snapshot of a change.org based petition requesting the Liberal Party of Australia to reconsider their National Broadband Network plan.">
