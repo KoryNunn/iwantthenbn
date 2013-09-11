@@ -53,7 +53,7 @@ var router = beeline.route({
     },
     "/robots /robots.txt":  function(request, response, tokens, values){
         setNoCacheResponse(response);
-        bee.staticFile("./public/robots.txt", "text/plain", 0)(request, response, tokens, values);
+        return beeline.staticFile("./public/robots.txt", "text/plain", 0)(request, response, tokens, values);
     },
     '`path...`': beeline.staticDir('./public', {
         ".txt": "text/plain",
