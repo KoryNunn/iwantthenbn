@@ -39,12 +39,11 @@
         setTimeout(function() {
           document.location.href = link.href;
         }, 300);
-      }    
-    </script>    
+      }
+    </script>
 </head>
 <body>
   <a href="https://github.com/KoryNunn/iwantthenbn" onClick="trackOutboundLink(this, 'Outbound Links', 'github.com/KoryNunn/iwantthenbn'); return false;" ><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
-
   <section>
     <h1>
       <strong>The Liberal Party of Australia:</strong>
@@ -59,33 +58,39 @@
         Sign the petition at <strong>change.org</strong>!
       </a>
     </div>
+    <div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="iwantthenbn">Tweet</a>
+      <div class="fb-like" data-href="http://iwantthenbn.com/" data-width="450" data-layout="button_count" data-show-faces="true" data-send="false"></div>
+      <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+      <script type="IN/Share" data-url="http://iwantthenbn.com/" data-counter="right"></script>
+    </div>
   </section>
-  
+
   <div class="stats">
     <div class="sponsor">
-      Proudly sponsored by 
+      Proudly sponsored by
       <br />
       <a href="https://signforms.com" onClick="trackOutboundLink(this, 'Outbound Links', 'signforms.com'); return false;">
         <img src="/signforms.jpg" />
       </a>
     </div>
-    
+
     <div class="sponsor-2">
-      Proudly sponsored by 
+      Proudly sponsored by
       <br />
       <a href="https://athletable.com" onClick="trackOutboundLink(this, 'Outbound Links', 'athletable.com'); return false;">
         <img src="/athletable-ad.jpg" />
       </a>
     </div>
-    
+
     <div class="current"></div>
     <div class="graphContainer" id="ratechart" style="width:100%; height:300px;"></div>
   </div>
-  
+
   <footer>
-    A PSA by <a href="http://github.com/korynunn" onClick="trackOutboundLink(this, 'Outbound Links', 'github.com/korynunn'); return false;">Kory Nunn</a> of <a href="//www.sidelab.com"  onClick="trackOutboundLink(this, 'Outbound Links', 'www.sidelab.com'); return false;">Sidelab.com</a>. 
+    A PSA by <a href="http://github.com/korynunn" onClick="trackOutboundLink(this, 'Outbound Links', 'github.com/korynunn'); return false;">Kory Nunn</a> of <a href="//www.sidelab.com"  onClick="trackOutboundLink(this, 'Outbound Links', 'www.sidelab.com'); return false;">Sidelab.com</a>.
     Twitter: <a href="https://twitter.com/KoryNunn" target="_blank">@KoryNunn</a>
-    
+
     <div class="sponsor">
       Proudly sponsored by
       <br />
@@ -94,6 +99,12 @@
       </a>
     </div>
   </footer>
+  <!-- social scripts -->
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/fb_LT/all.js#xfbml=1";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+  <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script>
+  <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+
   <script>
     var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
     _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
