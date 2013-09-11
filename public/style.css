@@ -78,6 +78,25 @@ em {
     background: #111;
     overflow: hidden;
     margin-top: 20px;
+    position: relative;
+}
+.stats .sponsor {
+    font-size: 11px;
+    color: #999;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+}
+.stats .sponsor img, .stats .sponsor-2 img {
+    margin-top: 5px;
+}
+
+.stats .sponsor-2 {
+    font-size: 11px;
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    color: #999;
 }
 
 .graphContainer{
@@ -125,4 +144,24 @@ body > footer a {
 }
 body > footer .sponsor { 
     margin-top: 10px;
+    font-size: 12px;
+    color: #ccc;
+    display: none;
+}
+body > footer .sponsor img {
+    max-width: 100%;
+}
+
+
+@media only screen and (max-width: 950px) {
+    
+    .stats .sponsor {
+        display: none;
+    }
+    .stats .sponsor-2 {
+        display: none;
+    }
+    body > footer .sponsor {
+        display: block;
+    }
 }
