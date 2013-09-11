@@ -71,9 +71,9 @@ function getData(){
     xhr.send();
 }
 
-window.addEventListener('load', function(){
+window.onload = function(){
 
-    document.querySelector('.current').appendChild(results);
+    document.getElementsByClassName('current')[0].appendChild(results);
     getData();
 
     setInterval(getData, dataInterval);
@@ -96,7 +96,6 @@ window.addEventListener('load', function(){
     }, displayInterval);
 
     var rateChartWrapper = document.getElementById('ratechart');
-    var popChartWrapper = document.getElementById('popchart');
 
     rateChart = new Highcharts.Chart({
         chart: {
@@ -146,4 +145,4 @@ window.addEventListener('load', function(){
             data: []
         }]
     });
-});
+};
