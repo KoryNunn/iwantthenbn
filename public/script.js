@@ -28,11 +28,11 @@ var result,
     signatureCount,
     signatureRate,
     results = crel('div', {'class':'results'},
-        crel('div',
+        crel('div', {'class':'countWrapper'},
             crel('span','Number of signatures:'),
             signatureCount = crel('span',{'class':'count'}, 'Loading..')
         ),
-        crel('div',
+        crel('div', {'class':'rateWrapper'},
             crel('span','Signatures per second:'),
             signatureRate = crel('span',{'class':'rate'}, 'Loading..')
         )
