@@ -75,7 +75,6 @@
             appData.displayRate = appData.rate;
         }
         appData.displayRate += (appData.rate - appData.displayRate) / dataDisplayRatio;
-        console.log(appData.displayRate);
         updateRateElement(appData.displayRate);
     }
 
