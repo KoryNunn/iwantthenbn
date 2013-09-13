@@ -123,6 +123,10 @@
 
     function initialiseRateChart(){
         var rateChartWrapper = document.getElementById('ratechart');
+        if(!rateChartWrapper){
+            //no chart in this view, dont load.
+            return;
+        }
         rateChart = new Highcharts.Chart({
             chart: {
                 renderTo: rateChartWrapper,

@@ -1,0 +1,17 @@
+.rateWrapper{
+    display:none;
+}
+.results{
+    padding:0;
+    height:auto;
+}
+.current{
+    margin:0;
+}
+.stats{
+    margin:0;
+}
+.graphContainer{
+    margin:0px;
+    max-width: none;
+}
